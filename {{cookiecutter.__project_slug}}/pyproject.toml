@@ -1,0 +1,51 @@
+[build-system]
+requires = ["hatchling", "hatch-vcs", "cython>=3.0.0","hatch-build-scripts"]
+build-backend = "hatchling.build"
+
+[project]
+name = "{{cookiecutter.__project_slug}}"
+authors = "{{cookiecutter.author}}"
+description = "{{cookiecutter.description}}"
+readme= "README.md"
+requires-python =">=3.11"
+keywords = []
+dynamic = ["version"]
+dependencies = []
+
+[project.optional-dependencies]
+dev=[]
+docs=[
+	"sphinx",
+	"numpydoc",
+	"pydata-sphinx-theme",
+	"myst-parser",
+	"sphinx_autodoc_typehints"
+]
+
+[tool]
+[tool.pytest.ini_options]
+addopts = "-v -s"
+testpaths=[
+	"Test",
+]
+python_functions = ["test_*"] # 只运行名为test_*的测试函数
+python_files = ["test_*.py"]  # 只运行名为test_*.py的测试文件
+pythonpath=["."]
+
+[tool.hatch]
+version = { source="vcs"}
+
+[tool.hatch.build]
+dev-mode-dirs = ["src"]
+
+[tool.hatch.build.targets]
+sdist.exclude = [
+  "docs",
+]
+
+[tool.hatch.envs.docs]
+features =["docs"]
+scripts.build='.\docs\make.bat html'
+
+[tool.hatch.envs.dev]
+features =["dev"]

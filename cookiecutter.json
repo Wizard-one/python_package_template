@@ -1,0 +1,9 @@
+{
+	"project_name": "package",
+	"__project_slug": "{{ cookiecutter.project_name.replace(' ', '_') }}",
+	"description": "",
+	"author": "wiz",
+	"_copy_without_render": [
+		"docs/_templates"
+	]
+}
