@@ -5,7 +5,7 @@
 
 
 
-{{cookiecutter.project_name_zh}} documentation
+{{cookiecutter.project_name}} documentation
 =========================================
 
 .. toctree::
